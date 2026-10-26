@@ -1,0 +1,11 @@
+# Bibliotecas Python que o robô usa (instaladas pelo instalar.bat)
+fastapi            # servidor e conexão com o celular
+uvicorn[standard]  # "motor" que roda o servidor
+numpy              # contas com áudio
+vosk               # ouvido: palavra de ativação
+onnx-asr[cpu,hub]  # entendimento: Parakeet português do Brasil
+faster-whisper     # entendimento reserva: Whisper
+av<19              # leitor de áudio do Whisper; a versão 19 quebrou a compatibilidade
+ollama             # cérebro: conversa com a IA local
+httpx              # cérebro na web
+piper-tts          # voz: texto -> fala

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>Rosto do Robô</title>
+  <link rel="stylesheet" href="rosto.css">
+</head>
+<body>
+  <!-- Onde os olhos são desenhados -->
+  <canvas id="olhos"></canvas>
+
+  <!-- O que o robô está fazendo (pequeno, no canto) -->
+  <div id="situacao">desligado</div>
+
+  <!-- Legendas: o que a pessoa disse e o que o robô respondeu -->
+  <div id="legenda">
+    <div id="legenda-pessoa"></div>
+    <div id="legenda-robo"></div>
+  </div>
+
+  <!-- Tela inicial: o navegador só libera microfone e som depois de um toque -->
+  <div id="inicio">
+    <div class="cartao">
+      <div class="titulo">Toque para ligar o robô</div>
+      <div class="dica">O navegador vai pedir para usar o microfone: toque em "Permitir".</div>
+    </div>
+  </div>
+
+  <!-- Avisos de conexão -->
+  <div id="aviso"></div>
+
+  <script src="rosto.js"></script>
+</body>
+</html>

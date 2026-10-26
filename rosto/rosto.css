@@ -1,0 +1,59 @@
+/* Aparência do rosto do robô */
+html, body {
+  margin: 0;
+  height: 100%;
+  background: #0b0f14;
+  color: #e8f6f1;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+#olhos {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#situacao {
+  position: fixed;
+  top: 10px;
+  left: 14px;
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+#legenda {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 12px;
+  padding: 0 20px;
+  text-align: center;
+  font-size: 20px;
+  line-height: 1.35;
+}
+#legenda-pessoa { color: #9fb3c8; font-size: 16px; margin-bottom: 4px; }
+#legenda-robo { color: #ffffff; }
+
+#inicio {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(11, 15, 20, 0.92);
+}
+#inicio .cartao { text-align: center; padding: 24px; }
+#inicio .titulo { font-size: 28px; margin-bottom: 12px; color: #5dcaa5; }
+#inicio .dica { font-size: 16px; opacity: 0.8; }
+
+#aviso {
+  position: fixed;
+  top: 10px;
+  right: 14px;
+  font-size: 14px;
+  color: #ef9f27;
+}
