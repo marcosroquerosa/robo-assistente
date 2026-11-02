@@ -26,7 +26,7 @@ echo "[4/5] Baixando os modelos de ouvido, entendimento e voz..."
 .venv/bin/python ferramentas/baixar_modelos.py
 
 echo "[5/5] Baixando o cérebro (IA local)..."
-ollama pull gemma3:1b
+ollama create tucano2 -f Modelfile.tucano2
 
 chmod +x iniciar.sh ativar_modo_automatico.sh desativar_modo_automatico.sh
 echo

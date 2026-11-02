@@ -9,3 +9,5 @@ av<19              # leitor de áudio do Whisper; a versão 19 quebrou a compati
 ollama             # cérebro: conversa com a IA local
 httpx              # cérebro na web
 piper-tts          # voz: texto -> fala
+opencv-python-headless  # visão: achar e reconhecer rostos
+onnxruntime        # visão: achar mãos (a voz e o entendimento já usam esta biblioteca)

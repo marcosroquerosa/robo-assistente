@@ -5,6 +5,7 @@ SERVIDOR (a ponte entre o computador e o celular)
 - Mantém uma conexão aberta (WebSocket) por onde passam:
     celular -> computador: o áudio do microfone e os toques na tela
     computador -> celular: o estado do robô, as legendas e o áudio da fala
+- Recebe as imagens da câmera do celular (pelos endereços /visao/...).
 
 Para ligar o robô:   python -m robo.servidor
 """
@@ -12,7 +13,7 @@ Para ligar o robô:   python -m robo.servidor
 import json
 
 import uvicorn
-from fastapi import FastAPI, WebSocket, WebSocketDisconnect
+from fastapi import FastAPI, Request, WebSocket, WebSocketDisconnect
 from fastapi.staticfiles import StaticFiles
 
 from robo import config
@@ -20,6 +21,14 @@ from robo.robo import Robo
 
 app = FastAPI()
 robo = None  # criado lá embaixo, quando o servidor liga
+
+
+@app.middleware("http")
+async def sem_memoria_no_navegador(pedido, proximo):
+    """Faz o Chrome do celular sempre buscar a versão nova da página do rosto."""
+    resposta = await proximo(pedido)
+    resposta.headers["Cache-Control"] = "no-store"
+    return resposta
 
 
 @app.websocket("/ws")
@@ -43,7 +52,20 @@ async def conexao_com_o_rosto(conexao: WebSocket):
         print("[servidor] o rosto desconectou")
 
 
-# A página do rosto (tem que vir depois da rota /ws)
+# Imagens pequenas da câmera, umas 2 por segundo. A resposta diz onde estão os rostos.
+@app.post("/visao/quadro")
+async def quadro_da_camera(pedido: Request):
+    return await robo.receber_quadro(await pedido.body())
+
+
+# Foto grande que o robô pediu ("tira uma foto", "o que você está vendo?")
+@app.post("/visao/foto/{numero}")
+async def foto_da_camera(numero: str, pedido: Request):
+    robo.receber_foto(numero, await pedido.body())
+    return {"ok": True}
+
+
+# A página do rosto (tem que vir depois das outras rotas)
 app.mount("/", StaticFiles(directory="rosto", html=True), name="rosto")
 
 

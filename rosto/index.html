@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="mobile-web-app-capable" content="yes">
   <title>Rosto do Robô</title>
-  <link rel="stylesheet" href="rosto.css">
+  <link rel="stylesheet" href="rosto.css?v=presenca1">
 </head>
 <body>
   <!-- Onde os olhos são desenhados -->
@@ -20,17 +20,41 @@
     <div id="legenda-robo"></div>
   </div>
 
+  <!-- Cartão ao lado do rosto: listas, passos e textos que o robô mostra enquanto fala -->
+  <div id="cartao">
+    <div id="cartao-titulo"></div>
+    <ol id="cartao-itens"></ol>
+  </div>
+
+  <!-- Aparece quando alguém levanta a mão para pedir a vez -->
+  <div id="mao">&#9995;</div>
+
+  <!-- Câmera (escondida: o computador é quem olha as imagens) -->
+  <video id="camera" playsinline muted autoplay></video>
+
+  <!-- Fotos: contagem 3, 2, 1, o "flash" e a foto que acabou de tirar -->
+  <div id="contagem"></div>
+  <div id="flash"></div>
+  <img id="foto" alt="foto que o robô tirou">
+  <!-- Imagem que o robô buscou na internet ("mostra uma placa-mãe") -->
+  <div id="imagem-busca">
+    <img id="imagem-figura" alt="imagem que o robô buscou">
+    <div id="imagem-titulo"></div>
+    <div id="imagem-fonte"></div>
+  </div>
+  <div id="na-web">&#128247; foto enviada para a IA na internet</div>
+
   <!-- Tela inicial: o navegador só libera microfone e som depois de um toque -->
   <div id="inicio">
     <div class="cartao">
       <div class="titulo">Toque para ligar o robô</div>
-      <div class="dica">O navegador vai pedir para usar o microfone: toque em "Permitir".</div>
+      <div class="dica">O navegador vai pedir para usar o microfone e a câmera: toque em "Permitir" nos dois.</div>
     </div>
   </div>
 
   <!-- Avisos de conexão -->
   <div id="aviso"></div>
 
-  <script src="rosto.js"></script>
+  <script src="rosto.js?v=presenca1"></script>
 </body>
 </html>

@@ -57,3 +57,148 @@ html, body {
   font-size: 14px;
   color: #ef9f27;
 }
+
+/* Câmera: fica invisível, mas precisa estar "na tela" para o navegador continuar mandando imagens */
+#camera {
+  position: fixed;
+  top: 0; left: 0;
+  width: 2px; height: 2px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#contagem {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 40vmin;
+  font-weight: bold;
+  color: #ffffff;
+  background: rgba(11, 15, 20, 0.6);
+}
+
+#flash {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: none;
+  background: #ffffff;
+}
+
+#foto {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 80%;
+  max-height: 70%;
+  display: none;
+  border: 6px solid #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+}
+
+#na-web {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 15px;
+  background: #ef9f27;
+  color: #0b0f14;
+}
+
+/* Imagem buscada: ocupa a tela, deixando espaço embaixo para as legendas */
+#imagem-busca {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  bottom: 70px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #0b0f14;
+  padding: 10px;
+  box-sizing: border-box;
+}
+#imagem-figura {
+  max-width: 100%;
+  min-height: 0;
+  flex: 1 1 auto;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #ffffff;
+}
+#imagem-titulo { font-size: 22px; margin-top: 6px; color: #5dcaa5; text-transform: capitalize; }
+#imagem-fonte { font-size: 12px; opacity: 0.6; }
+
+/* Aviso de que alguém levantou a mão */
+#mao {
+  position: fixed;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+  font-size: 26px;
+}
+
+/* Cartão ao lado do rosto: listas, passos e textos */
+#cartao {
+  position: fixed;
+  top: 26px;
+  right: 16px;
+  bottom: 16px;
+  left: 50%;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  padding: 12px 18px;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #151e27;
+  border: 1px solid #2c3a45;
+}
+#cartao-titulo {
+  flex: none;
+  margin-bottom: 8px;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #5dcaa5;
+}
+#cartao-itens { margin: 0; padding: 0; list-style: none; line-height: 1.25; }
+#cartao-itens li { margin-bottom: 0.3em; }
+#cartao-itens.lista li { padding-left: 0.9em; text-indent: -0.9em; }
+#cartao-itens.lista li::before { content: "\2022"; color: #5dcaa5; display: inline-block; width: 0.9em; text-indent: 0; }
+#cartao-itens.passos { counter-reset: passo; }
+#cartao-itens.passos li { position: relative; padding-left: 1.7em; min-height: 1.3em; counter-increment: passo; }
+#cartao-itens.passos li::before {
+  content: counter(passo);
+  position: absolute;
+  left: 0;
+  top: 0.02em;
+  width: 1.3em;
+  height: 1.3em;
+  line-height: 1.3em;
+  text-align: center;
+  font-size: 0.85em;
+  font-weight: 700;
+  border-radius: 50%;
+  background: #5dcaa5;
+  color: #0b0f14;
+}
+#cartao-itens.texto { text-align: center; font-weight: 600; }
+
+/* Com o cartão aberto, a legenda fica só embaixo do rosto */
+body.com-cartao #legenda { right: 51%; padding: 0 10px; font-size: 15px; }
+body.com-cartao #legenda-pessoa { font-size: 13px; }
+
+/* Celular em pé: o cartão fica embaixo do rosto */
+@media (orientation: portrait) {
+  #cartao { top: 40%; left: 16px; bottom: 110px; }
+  body.com-cartao #legenda { right: 0; }
+}

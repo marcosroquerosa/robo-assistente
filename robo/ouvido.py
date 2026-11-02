@@ -23,6 +23,12 @@ from robo import config
 SetLogLevel(-1)  # deixa o Vosk quieto no terminal
 
 
+def medir_volume(pedaco: bytes) -> float:
+    """Volume de um pedacinho de áudio (o mesmo que é comparado com LIMIAR_DE_SILENCIO)."""
+    amostras = np.frombuffer(pedaco, dtype=np.int16).astype(np.float32)
+    return float(np.sqrt(np.mean(amostras ** 2))) if len(amostras) else 0.0
+
+
 class Ouvido:
     def __init__(self):
         print("[ouvido] carregando o Vosk...")
@@ -72,8 +78,7 @@ class Ouvido:
 
     def _gravar(self, pedaco: bytes):
         duracao = len(pedaco) / 2 / config.TAXA_DE_AMOSTRAGEM  # 2 bytes por amostra
-        amostras = np.frombuffer(pedaco, dtype=np.int16).astype(np.float32)
-        volume = float(np.sqrt(np.mean(amostras ** 2))) if len(amostras) else 0.0
+        volume = medir_volume(pedaco)
 
         if volume > config.LIMIAR_DE_SILENCIO:
             if not self.alguem_falou:
