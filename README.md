@@ -4,6 +4,8 @@ Robô de mesa que ajuda em aulas de informática. Ele ouve uma pergunta, entende
 
 O Byte é montado com um computador pequeno e um celular reaproveitado. A voz, o entendimento da fala e o reconhecimento de rostos rodam no próprio computador, sem internet. A internet é usada para a IA mais esperta e para buscar imagens.
 
+![Foto do Robô Byte](foto-robo.jpg)
+
 ## O que ele faz
 
 - **Conversa por voz:** acorda com "ei robô" ou com um toque na tela, responde em voz alta e mostra legendas.
