@@ -198,3 +198,8 @@ Para mudar o jeito do robô, edite `robo/personalidade.txt`.
 - **Memória:** a conversa fica só na memória e some quando o robô reinicia. As fotos de "tira uma foto" ficam em `fotos/`.
 
 Avise a turma e a escola de que o robô escuta e usa uma câmera.
+
+> Criado por Marcos Roque da Rosa. Licença Apache 2.0.
+
+Versão para a BTV B13: [robo-assistente-b13](https://github.com/marcosroquerosa/robo-assistente-b13).
+
