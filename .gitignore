@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+modelos/
+dados/
+fotos/
+chave_web.txt
+*.wav
